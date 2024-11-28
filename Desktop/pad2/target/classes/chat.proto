@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_package = "com.example.chat";
+option java_outer_classname = "ChatProto";
+
+service ChatService {
+    // Streaming bidirecțional pentru comunicare în timp real
+    rpc Chat(stream ChatMessage) returns (stream ChatMessage);
+}
+
+// Mesajul de chat
+message ChatMessage {
+    string sender = 1;
+    string recipient = 2; // Numele destinatarului sau "ALL" pentru broadcast
+    string message = 3;
+}
